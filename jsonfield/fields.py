@@ -16,7 +16,11 @@ from django.forms import fields
 try:
     from django.forms.utils import ValidationError
 except ImportError:
-    from django.forms.util import ValidationError
+    try:
+        from django.forms.util import ValidationError
+    except ImportError:
+        from django.forms import ValidationError
+
 
 from .subclassing import SubfieldBase
 
